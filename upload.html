@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+  <form>
+    <ul>
+      <li>Image Name: <input name="name" type="text" /></li>
+      <li><input name="file" type="file" /></li>
+      <li><input type="submit" value="Upload" /></li>
+    </ul>
+  </form>
+  
+  <script>
+  $('form').submit(function(e) {
+    e.preventDefault();
+    var formData = new FormData();
+    formData.append('name', $('input[type=text]').val());
+    // Attach file
+    formData.append('image', $('input[type=file]')[0].files[0]);
+    console.log($('input[type=file]')[0].files[0]);
+    console.log(formData.toString());
+  
+    $.ajax({
+      url: '/ajax?_csrf=' + getCsrf(),
+      data: formData,
+      method: 'POST',
+      contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+      processData: false, // NEEDED, DON'T OMIT THIS
+      success: function(result) {
+        console.log(result);
+        location.href = result.url;
+      },
+      error: function(responseStr) {
+        alert("error", responseStr);
+      }
+    });
+  
+    function getCsrf() {
+      var keyValue = document.cookie.match('(^|;) ?csrfToken=([^;]*)(;|$)');
+      return keyValue ? keyValue[2] : null;
+    }
+  });
+  </script>
+</body>
+</html>
