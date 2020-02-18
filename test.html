@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+ 
+<script>
+  async function foreach(){
+    let promise = new Promise((resolve)=>{
+      setTimeout(() => {
+        resolve('done')
+      }, 1000);
+    })
+    await promise.then((val)=>{
+      console.log(val);
+    })
+    console.log(2222);
+    return Promise.resolve(3333)
+  }
+
+  
+  foreach().then((val)=>{
+    console.log(val);
+  })
+</script>
+</body>
+</html>

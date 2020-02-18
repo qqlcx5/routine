@@ -13,12 +13,20 @@ const responseList = [
   { id: 3, a: 3 },
   { id: 1, a: 4 },
 ];
-
-const result = responseList.reduce((acc, cur) => {
-  // console.log(acc,cur);
-    // return acc + cur
-    const ids = acc.map(item => item.id);
-    return ids.includes(cur.id) ? acc : [...acc, cur];
-}, []);
+const result = responseList.reduce((acc,cur)=>{
+  const ids = acc.map(item => item.id)
+  return ids.includes(cur.id)?acc: [...acc,cur]
+},[])
 console.log(result);
+
+
+
+
+
+// const result = responseList.reduce((acc, cur) => {
+//     console.log(acc,cur);
+//     const ids = acc.map(item => item.id);
+//     return ids.includes(cur.id) ? acc : [...acc, cur];
+// }, []);
+// console.log(result);
 
