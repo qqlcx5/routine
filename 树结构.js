@@ -11,3 +11,5 @@ const comments = [
   { id: 5, parent_id: 4 }
 ];
 const nestedComments = nest(comments);
+
+console.log(nestedComments);
