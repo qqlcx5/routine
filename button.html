@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      button {
+        color: #454545;
+        background: transparent;
+        border: 2px solid #454545;
+        position: relative;
+        padding: 0.5em 1em;
+        transition: all 0.3s ease-in-out;
+        text-align: center;
+        font-family: comfortaa;
+        font-weight: bold;
+        font-size: 1.2em;
+        cursor: pointer;
+      }
+      button:before,
+      button:after {
+        content: '';
+        display: block;
+        position: absolute;
+        border-color: #454545;
+        box-sizing: border-box;
+        border-style: solid;
+        width: 20px;
+        height: 20px;
+        transition: all 0.5s ease-in-out;
+      }
+      button:before {
+        top: -6px;
+        left: -6px;
+        border-width: 2px 0 0 2px;
+        z-index: 5;
+      }
+      button:after {
+        bottom: -6px;
+        right: -6px;
+        border-width: 0 2px 2px 0;
+      }
+      button:hover:before,
+      button:hover:after {
+        width: calc(100% + 12px);
+        height: calc(100% + 12px);
+        border-color: #fff;
+      }
+      button:hover {
+        color: #353535;
+        background-color: #fff;
+      }
+      button:active,
+      button:focus {
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="font-size: 16px;">
+      <button>点击喔</button>
+    </div>
+  </body>
+</html>
