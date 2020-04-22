@@ -10,4 +10,5 @@ function bubbleSort(arr) {
   }
   return arr;
 }
+
 console.log(bubbleSort([9, 78, 8]));
