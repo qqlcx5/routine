@@ -1,33 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    .expand-range {
-      position: relative;
-      width: 200px;
-      height: 200px;
-      background: #eee;
-      display: inline-block;
-    }
-
-    .expand-range:after {
-      content: '';
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      bottom: -10px;
-      left: -10px;
-      /* background: #099; */
-    }
-  </style>
+  <meta charset="utf-8" />
+  <title></title>
+  <script src="https://cdn.bootcss.com/vue/2.6.10/vue.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" />
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <style type="text/css"></style>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue-clipboard2/0.3.1/vue-clipboard.min.js"></script>
 </head>
 
 <body>
-  <div class="expand-range"></div>
+  <div id="app">
+    <el-row>
+      <el-row :gutter="20">
+        <el-col :span="14" :offset="4">
+          <el-input v-model="github" placeholder="请输入内容"></el-input>
+        </el-col>
+        <el-col :span="4">
+          <el-button type="primary" @click="handleDealUrl()">主要按钮</el-button>
+        </el-col>
+      </el-row>
+    </el-row>
+    <el-row>
+      <el-row :gutter="20">
+        <el-col :span="12" :offset="4">
+          <div>
+            {{ github }}
+          </div>
+        </el-col>
+        <el-col :span="4">
+          <el-button type="primary" 
+          v-clipboard:copy="github" 
+          v-clipboard:success="copy" 
+          v-clipboard:error="onError">
+          doCopy</el-button>
+        </el-col>
+      </el-row>
+    </el-row>
+  </div>
+  <script type="text/javascript">
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          github: '',
+        };
+      },
+      methods: {
+        handleDealUrl() {
+          this.github = this.github
+            .replace('github.com', 'cdn.jsdelivr.net/gh')
+            .replace('/blob/', '@');
+        },
+        copy(e) {
+          console.log(e.text);
+        },
+        onError(e) {
+          console.log(e);
+        },
+      },
+    });
+  </script>
 </body>
 
 </html>
