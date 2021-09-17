@@ -8,7 +8,7 @@
 // }
 // console.log(isArrayEqual([6, 5, 2, 4, 1, 3], [1, 2, 3, 4, 5, 6]));
 
-// function isObjectEqual(obj1, obj2, has = true) {
+// function isEqual(obj1, obj2, has = true) {
 //   // 判断类型
 //   const o1 = obj1 instanceof Object;
 //   const o2 = obj2 instanceof Object;
@@ -30,7 +30,7 @@
 //   }
 //   return has;
 // }
-// console.log(isObjectEqual({a:2,b:4}, {b:4,a:2}));
+// console.log(isEqual({a:2,b:4}, {b:4,a:2}));
 
 // const diffArray = (a, b) => {
 //   const a1 = new Set(a);
